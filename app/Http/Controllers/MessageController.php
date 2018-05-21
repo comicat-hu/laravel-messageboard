@@ -59,4 +59,13 @@ class MessageController extends Controller
 
         return redirect('messages');
     }
+
+    public function destroy(Request $request, Message $message)
+    {
+        $this->authorize('destroy', $message);
+        
+        $message->delete();
+
+        return redirect('/messages');
+    }
 }

@@ -57,8 +57,16 @@
                                     <div>{{ $message->name }}</div>
                                 </td>
 
+                                <!-- Delete Button -->
                                 <td>
-                                    <!-- 未完成：刪除按鈕 -->
+                                    <form action="{{ url('message/' . $message->id) }}" method="POST">
+                                        {!! csrf_field() !!}
+                                        {!! method_field('DELETE') !!}
+
+                                        <button type="submit" id="delete-message-{{ $message->id }}" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
